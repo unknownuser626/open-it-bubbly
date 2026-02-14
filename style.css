@@ -78,12 +78,14 @@ button:active {
 #yes {
   background: #ff2e63;
   color: #fff;
+  z-index: 1;
 }
 
 #no {
   background: #fff;
   color: #ff2e63;
   position: relative;
+  z-index: 2;
 }
 
 /* ---------- HIDE ---------- */
@@ -172,4 +174,5 @@ button:active {
     padding: 18px 36px;
   }
 }
+
 
