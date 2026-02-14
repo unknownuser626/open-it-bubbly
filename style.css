@@ -43,7 +43,7 @@ body.celebrate::before {
 /* ---------- TEXT ---------- */
 h1 {
   color: #fff;
-  font-size: 4rem;
+  font-size: 2.2rem;
   margin-bottom: 30px;
 }
 
@@ -174,5 +174,6 @@ button:active {
     padding: 18px 36px;
   }
 }
+
 
 
