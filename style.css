@@ -1,7 +1,9 @@
+/* ---------- RESET ---------- */
 * {
   box-sizing: border-box;
 }
 
+/* ---------- BODY ---------- */
 body {
   margin: 0;
   height: 100vh;
@@ -14,6 +16,7 @@ body {
   transition: background 0.8s ease;
 }
 
+/* ---------- CELEBRATION BACKGROUND ---------- */
 body.celebrate {
   background:
     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
@@ -29,6 +32,7 @@ body.celebrate::before {
   z-index: -1;
 }
 
+/* ---------- CONTAINER ---------- */
 .container {
   width: 100%;
   max-width: 420px;
@@ -36,6 +40,7 @@ body.celebrate::before {
   text-align: center;
 }
 
+/* ---------- TEXT ---------- */
 h1 {
   color: #fff;
   font-size: 2rem;
@@ -48,6 +53,7 @@ p {
   line-height: 1.6;
 }
 
+/* ---------- BUTTON WRAPPER ---------- */
 .buttons {
   display: flex;
   gap: 20px;
@@ -55,17 +61,20 @@ p {
   position: relative;
 }
 
-.buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  position: relative;
+/* ---------- BUTTONS (MOBILE FIRST) ---------- */
+button {
+  font-size: 1.4rem;
+  padding: 20px 42px;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
 }
 
 button:active {
   transform: scale(0.95);
 }
 
+/* ---------- BUTTON COLORS ---------- */
 #yes {
   background: #ff2e63;
   color: #fff;
@@ -77,11 +86,12 @@ button:active {
   position: relative;
 }
 
+/* ---------- HIDE ---------- */
 .hidden {
   display: none;
 }
 
-/* Floating hearts */
+/* ---------- FLOATING HEARTS ---------- */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -100,22 +110,16 @@ button:active {
   }
 }
 
-@media (min-width: 1024px) {
-  .container {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
-    border-radius: 24px;
+/* ---------- MOBILE EXTRA COMFORT ---------- */
+@media (max-width: 480px) {
+  .buttons {
+    gap: 18px;
+  }
+
+  button {
+    min-width: 160px;
   }
 }
-
-button {
-  font-size: 1.25rem;          
-  padding: 18px 36px;          
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
 
 /* ---------- TABLET ---------- */
 @media (min-width: 600px) {
@@ -132,8 +136,8 @@ button {
   }
 
   button {
-    font-size: 1.15rem;
-    padding: 16px 32px;
+    font-size: 1.25rem;
+    padding: 18px 36px;
   }
 }
 
@@ -146,6 +150,9 @@ button {
 
   .container {
     max-width: 640px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    border-radius: 24px;
   }
 
   h1 {
@@ -165,15 +172,3 @@ button {
     padding: 18px 36px;
   }
 }
-
-@media (max-width: 480px) {
-  .buttons {
-    gap: 16px;
-  }
-
-  button {
-    min-width: 140px;          
-  }
-}
-
-
