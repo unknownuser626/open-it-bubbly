@@ -3,9 +3,11 @@ const noBtn = document.getElementById("no");
 const question = document.getElementById("question");
 const celebration = document.getElementById("celebration");
 
+let yesLocked = false;
+
 /* ---------- YES BUTTON ---------- */
 yesBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
+  if (yesLocked) return; // 🚫 block accidental triggers
 
   document.body.classList.add("celebrate");
   question.classList.add("hidden");
@@ -14,25 +16,35 @@ yesBtn.addEventListener("click", (e) => {
   startHearts();
 });
 
-/* ---------- NO BUTTON (ANTI GHOST-CLICK) ---------- */
-noBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();      // stop click-through
-  e.stopPropagation();     // stop bubbling
-  moveNo();
-});
+/* ---------- NO BUTTON (ANTI-GHOST CLICK) ---------- */
+noBtn.addEventListener("touchstart", handleNo, { passive: false });
+noBtn.addEventListener("mousedown", handleNo);
 
-noBtn.addEventListener("click", (e) => {
-  e.preventDefault();      // block real clicks
+function handleNo(e) {
+  e.preventDefault();
   e.stopPropagation();
+
+  lockYes();       // 🔒 temporarily disable YES
   moveNo();
-});
+}
+
+/* ---------- LOCK YES BUTTON ---------- */
+function lockYes() {
+  yesLocked = true;
+  yesBtn.style.pointerEvents = "none";
+
+  setTimeout(() => {
+    yesLocked = false;
+    yesBtn.style.pointerEvents = "auto";
+  }, 300); // ⏱️ safe delay
+}
 
 /* ---------- MOVE NO BUTTON ---------- */
 function moveNo() {
   noBtn.style.position = "fixed";
 
-  const maxX = window.innerWidth - noBtn.offsetWidth - 10;
-  const maxY = window.innerHeight - noBtn.offsetHeight - 10;
+  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -41,7 +53,7 @@ function moveNo() {
   noBtn.style.top = `${y}px`;
 }
 
-/* ---------- HEART ANIMATION ---------- */
+/* ---------- HEARTS ---------- */
 function startHearts() {
   setInterval(() => {
     const heart = document.createElement("div");
