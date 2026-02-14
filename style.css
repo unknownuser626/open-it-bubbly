@@ -108,6 +108,15 @@ button:active {
   }
 }
 
+button {
+  font-size: 1.25rem;          
+  padding: 18px 36px;          
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+
 /* ---------- TABLET ---------- */
 @media (min-width: 600px) {
   h1 {
@@ -156,3 +165,15 @@ button:active {
     padding: 18px 36px;
   }
 }
+
+@media (max-width: 480px) {
+  .buttons {
+    gap: 16px;
+  }
+
+  button {
+    min-width: 140px;          
+  }
+}
+
+
